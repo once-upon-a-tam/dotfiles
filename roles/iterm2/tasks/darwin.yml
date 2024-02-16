@@ -1,0 +1,10 @@
+---
+- name: Tap the cask-fonts Homebrew repository
+  community.general.homebrew_tap:
+    name: hombrew/cask-fonts
+    state: present
+
+- name: Install Inconsolata nerd font
+  community.general.homebrew_cask:
+    name: font-inconsolata-nerd-font
+    state: preset
