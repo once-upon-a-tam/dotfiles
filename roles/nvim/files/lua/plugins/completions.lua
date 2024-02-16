@@ -14,6 +14,9 @@ return {
     },
   },
   {
+    "hrsh7th/cmp-buffer",
+  },
+  {
     "hrsh7th/cmp-path",
   },
   {
@@ -38,7 +41,6 @@ return {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
-        }, {
           { name = "buffer" },
         }),
         formatting = {
