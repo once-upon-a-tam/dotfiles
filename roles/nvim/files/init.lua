@@ -1,0 +1,3 @@
+-- [[ init.lua ]]
+
+require('tam')
