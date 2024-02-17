@@ -46,6 +46,18 @@
     name: tag.gpgsign
     scope: global
     value: true
+
+- name: Enable pruning on fetch
+  community.general.git_config:
+    name: fetch.prune
+    scope: global
+    value: true
+
+- name: Disable rebase on pull
+  community.general.git_config:
+    name: pull.rebase
+    scope: global
+    value: false
  
 - name: Copy commit message template file
   ansible.builtin.copy:
