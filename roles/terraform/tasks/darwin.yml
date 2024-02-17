@@ -1,0 +1,11 @@
+---
+- name: Add the Hashicorp Homebrew tap
+  community.general.homebrew_tap:
+    name: hashicorp/tap
+    state: present
+
+- name: Install terraform
+  community.general.homebrew:
+    name: hashicorp/tap/terraform
+    state: latest
+  
