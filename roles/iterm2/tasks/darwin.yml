@@ -24,23 +24,31 @@
     name: exa
     state: present
 
-- name: Download oh-my-zsh install script
-  ansible.builtin.get_url:
-    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-    dest: /tmp/install_ohmyzsh.sh
-
-- name: Run oh-my-zsh install script
-  command: sh /tmp/install_ohmyzsh.sh --unattended
-  register: ohmyzsh_result
-  failed_when: "'FAILED' in ohmyzsh_result.stderr"
-
-- name: Set permissions for oh-my-zsh
-  ansible.builtin.file:
+- name: Check if oh-my-zsh is installed
+  stat:
     path: "{{ ansible_user_dir }}/.oh-my-zsh"
-    owner: "{{ ansible_user_id }}"
-    group: "staff"
-    mode: '0750'
-    recurse: true
+  register: ohmyzsh_config_file
+
+- name: Install oh-my-zsh
+  block:
+  - name: Download oh-my-zsh install script
+    ansible.builtin.get_url:
+      url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+      dest: /tmp/install_ohmyzsh.sh
+
+  - name: Run oh-my-zsh install script
+    command: sh /tmp/install_ohmyzsh.sh --unattended
+    register: ohmyzsh_install_result
+    failed_when: "'FAILED' in ohmyzsh_install_result.stderr"
+
+  - name: Set permissions for oh-my-zsh
+    ansible.builtin.file:
+      path: "{{ ansible_user_dir }}/.oh-my-zsh"
+      owner: "{{ ansible_user_id }}"
+      group: "staff"
+      mode: '0750'
+      recurse: true
+  when: not ohmyzsh_config_file.stat.exists
 
 - name: Copy .zshrc
   ansible.builtin.copy:
