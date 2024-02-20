@@ -1,0 +1,5 @@
+---
+- name: Install orbstack
+  community.general.homebrew:
+    name: orbstack
+    state: latest

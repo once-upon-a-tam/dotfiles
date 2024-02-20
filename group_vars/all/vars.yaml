@@ -2,7 +2,10 @@ git_user_name: Timothee Simon-Franza
 git_user_email:
 default_roles:
   - ssh
-  # - nvim
+  - homebrew
+  - docker
+  - iterm2
+  - nvim
 
 ssh_key:
   id_ed5119:
