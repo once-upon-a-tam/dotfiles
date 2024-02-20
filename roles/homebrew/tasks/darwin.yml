@@ -1,0 +1,33 @@
+---
+- name: Check if Homebrew is already installed
+  stat:
+    path: /usr/local/bin/brew
+  register: brew_installed
+
+- name: Install Homebrew
+  block:
+  - name: Make sure Homebrew directories exists
+    ansible.builtin.file: 
+      path: /usr/local/*
+      state: directory
+      mode: 0775
+      owner: root
+      group: wheel
+      recurse: true
+    become: true
+
+  - name: Run Homebrew installation script
+    ansible.builtin.shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/install/master/install.sh)"
+
+  - name: Reset the Homebrew Library repo
+    ansible.builtin.git: 
+      repo: https://github.com/Homebrew/brew.git
+      dest: /usr/local/Homebrew/Library
+      clone: no
+      update: true
+      force: true
+  when: not brew_installed.stat.exists
+
+- name: Update Homebrew
+  community.general.homebrew:
+    update_homebrew: true
