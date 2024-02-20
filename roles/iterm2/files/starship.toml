@@ -1,0 +1,30 @@
+format = '$username$hostname$directory$git_branch$git_status'
+
+add_newline = false
+
+[username]
+format = '[$user]($style)'
+style_user = '#B8BB26 bold'
+style_root = 'red bold'
+disabled = false
+show_always = true
+
+[hostname]
+format = '[$ssh_symbol](bold #D3869B) on [$hostname](bold #D3869B) '
+ssh_only = false
+disabled = false
+ssh_symbol = ""
+
+[directory]
+format = "at [$path]($style)[$read_only]($read_only_style) "
+truncation_length = 8
+truncate_to_repo = true
+read_only = ""
+read_only_style = "bold dimmed white"
+truncation_symbol = ".../"
+use_os_path_sep = false
+
+[git_branch]
+format = "via [$symbol$branch(:$remote_branch)]($style) "
+truncation_length = 16
+style = "bold #EBDBB2"

@@ -1,10 +1,62 @@
 ---
+- name: Install iterm2
+  community.general.homebrew_cask:
+    name: iterm2
+    state: present
+
 - name: Tap the cask-fonts Homebrew repository
   community.general.homebrew_tap:
-    name: hombrew/cask-fonts
+    name: homebrew/cask-fonts
     state: present
 
 - name: Install Inconsolata nerd font
   community.general.homebrew_cask:
     name: font-inconsolata-nerd-font
-    state: preset
+    state: present
+
+- name: Install bat
+  community.general.homebrew:
+    name: bat
+    state: present
+
+- name: Install exa
+  community.general.homebrew:
+    name: exa
+    state: present
+
+- name: Download oh-my-zsh install script
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install_ohmyzsh.sh
+
+- name: Run oh-my-zsh install script
+  command: sh /tmp/install_ohmyzsh.sh --unattended
+  register: ohmyzsh_result
+  failed_when: "'FAILED' in ohmyzsh_result.stderr"
+
+- name: Set permissions for oh-my-zsh
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.oh-my-zsh"
+    owner: "{{ ansible_user_id }}"
+    group: "staff"
+    mode: '0750'
+    recurse: true
+
+- name: Copy .zshrc
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.zshrc.local"
+    src: "{{ role_path }}/files/.zshrc"
+    mode: 'u=rw,go=r'
+
+- name: Install starship prompt
+  community.general.homebrew:
+    name: starship
+    state: present
+
+- name: Copy starship configuration file
+  ansible.builtin.copy:
+    dest: "{{ ansible_user_dir }}/.config/starship.toml"
+    src: "{{ role_path }}/files/starship.toml"
+    mode: 'u=rw,go=r'
+
+
