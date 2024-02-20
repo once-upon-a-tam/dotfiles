@@ -1,0 +1,9 @@
+git_user_name: Timothee Simon-Franza
+git_user_email:
+default_roles:
+  - ssh
+  # - nvim
+
+ssh_key:
+  id_ed5119:
+  id_ed5119.pub:
