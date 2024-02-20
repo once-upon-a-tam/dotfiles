@@ -14,7 +14,7 @@
   community.general.git_config:
     name: user.email
     scope: global
-    value: "{{ git_user_email }}"
+    value: "{{ vault_git_user_email }}"
   no_log: true
 
 - name: Set user.name
@@ -23,11 +23,17 @@
     scope: global
     value: "{{ git_user_name }}"
 
+- name: Check if ssh key exists
+  ansible.builtin.stat:
+    path: "{{ ansible_user_dir}}/.ssh/id_ed25519.pub"
+  register: git_signing_key
+    
 - name: Set user.signingkey
   community.general.git_config:
     name: user.signingkey
     scope: global
     value: "{{ ansible_user_dir }}/.ssh/id_ed25519.pub"
+  when: git_signing_key.exists
 
 - name: Set gpg.format
   community.general.git_config:
