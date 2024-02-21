@@ -11,7 +11,34 @@ At this time, only Mac OS is supported, but the repo is set up so that it will b
 Ansible replicates what we would do to set up a development environment pretty well. There are many automation solutions out there - I happen to enjoy using Ansible.
 
 ## Requirements
-TBD
+### Mac OS
+#### Homebrew
+Homebrew is the standard Mac OS package manager. If you do not yet have is installed, simply run the following commands
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+(echo; echo 'eval "$/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
+#### Pipx
+Pipx is a python package manager, which we use it to install Ansible.
+```
+brew install pipx
+pipx ensurepath
+```
+
+#### Ansible
+Obviously, in an ansible-based dotfile managing solution, we need ansible.
+To install ansible using pipx, simply run the following command: 
+```
+pipx install --include-deps ansible
+```
+
+### Ansible galaxy requirements
+To install the ansible requirements for this package, simply run :
+```
+ansible-galaxy install -r requirements.yml
+```
 
 ## Setup
 ### Variables
