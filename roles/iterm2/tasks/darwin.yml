@@ -67,4 +67,8 @@
     src: "{{ role_path }}/files/starship.toml"
     mode: 'u=rw,go=r'
 
+- name: Create hushlogin file
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.hushlogin"
+    state: file
 
