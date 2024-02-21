@@ -1,4 +1,9 @@
 ---
+- name: ensure the .ssh directory exists.
+  file:
+    path: "{{ ansible_user_dir }}/.ssh"
+    state: directory
+
 - name: Copy SSH keys
   copy:
     dest: "{{ ansible_user_dir }}/.ssh/{{ ssh_key_item.key }}"
