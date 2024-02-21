@@ -19,9 +19,9 @@
     name: bat
     state: present
 
-- name: Install exa
+- name: Install eza
   community.general.homebrew:
-    name: exa
+    name: eza
     state: present
 
 - name: Check if oh-my-zsh is installed
