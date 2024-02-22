@@ -2,6 +2,7 @@
 - name: Enable Firewall
   ansibule.builtin.command:
     cmd: defaults -currentHost write /Library/Preferences/com.apple.alf globalstate -bool true
+  become: true
 
 - name: Enable stealth mode
   block:
@@ -10,6 +11,7 @@
         cmd: defaults -currentHost read /Library/Preferences/com.apple.alf stealthenabled
       register: firewall_stealth_enabled
       changed_when: firewall_stealth_enabled != 1
+      become: true
 
     - name: Enable stealth Mode
       ansible.builtin.command:
