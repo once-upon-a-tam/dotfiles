@@ -21,12 +21,10 @@ dockitems_remove:
   - 'App Store'
   - 'System Settings'
   - Downloads
+  - Terminal
 
 # Dock items to add. `pos` parameter is optional and will place the Dock item
 dockitems_persist:
-  - name: "Finder"
-    path: "/System/Library/CoreServices/Finder.app/"
-    pos: 0
   - name: "Firefox"
     path: "/Applications/Firefox.app/"
     pos: 1
@@ -39,5 +37,3 @@ dockitems_persist:
   - name: "Kitty"
     path: "/Applications/kitty.app/"
     pos: 4
-  - name: ""
-    type: "spacer"
