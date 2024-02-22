@@ -17,5 +17,5 @@
   loop: "{{ mas }}"
 
 - name: "Add specified applications to login items to run on startup"
-  shell: osascript -e 'tell application "System Events" to make login item at end with properties {path: "{{ item.path }}", hidden: "{{ item.hidden }}"}'
+  shell: "osascript -e 'tell application \"System Events\" to make login item at end with properties {path: \"{{ item.path }}\", hidden: {{ item.hidden }}}'"
   loop: "{{ run_at_login }}"

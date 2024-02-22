@@ -16,7 +16,7 @@ run_at_login:
     hidden: false
 
   - name: soundsource
-    path: /Applications/SoundSource.app/So
+    path: /Applications/SoundSource.app/
     hidden: false
 
   - name: amphetamine
