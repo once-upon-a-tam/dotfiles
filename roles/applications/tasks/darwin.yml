@@ -1,0 +1,7 @@
+---
+- name: Install {{ item }}
+  community.general.homebrew_cask:
+    name: {{ item }}
+    state: latest
+  loop: "{{ homebrew_cask }}"
+
