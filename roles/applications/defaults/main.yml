@@ -11,5 +11,14 @@ mas:
     id: 937984704
 
 run_at_login:
-  - rectangle
-  - soundsource
+  - name: rectangle
+    path: /Applications/Rectangle.app/
+    hidden: false
+
+  - name: soundsource
+    path: /Applications/SoundSource.app/So
+    hidden: false
+
+  - name: amphetamine
+    path: /Applications/Amphetamine.app/
+    hidden: false
