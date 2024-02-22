@@ -1,6 +1,6 @@
 ---
 - name: Enable Firewall
-  ansibule.builtin.command:
+  ansible.builtin.command:
     cmd: defaults -currentHost write /Library/Preferences/com.apple.alf globalstate -bool true
   become: true
 
