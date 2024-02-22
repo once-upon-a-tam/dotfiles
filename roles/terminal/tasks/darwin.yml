@@ -1,7 +1,7 @@
 ---
-- name: Install iterm2
+- name: Install kitty
   community.general.homebrew_cask:
-    name: iterm2
+    name: kitty
     state: present
 
 - name: Tap the cask-fonts Homebrew repository
