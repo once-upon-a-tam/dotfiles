@@ -2,3 +2,14 @@ homebrew_cask:
   - firefox
   - discord
   - slack
+  - google-chrome
+  - soundsource
+  - rectangle
+
+mas:
+  - name: "amphetamine"
+    id: 937984704
+
+run_at_login:
+  - rectangle
+  - soundsource

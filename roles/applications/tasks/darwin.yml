@@ -1,7 +1,13 @@
 ---
-- name: "Install {{ item }}"
+- name: "Install {{ item }} from homebrew"
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
   loop: "{{ homebrew_cask }}"
+
+- name: "Install {{ item.name | default(item) }} from the mac app store"
+  community.general.mas:
+    id: "{{ item.id }}"
+    state: present
+  loop: "{{ mas }}"
 
