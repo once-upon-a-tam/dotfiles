@@ -8,6 +8,8 @@ default_roles:
   - terminal
   - nvim
   - dock
+  - firewall
+  - finder
 
 ssh_key:
   id_ed5119:
