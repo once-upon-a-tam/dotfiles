@@ -1,9 +1,14 @@
 ---
-- name: "Install {{ item }} from homebrew"
+- name: "Install specified homebrew casks"
   community.general.homebrew_cask:
     name: "{{ item }}"
     state: latest
   loop: "{{ homebrew_cask }}"
+
+- name: "Ensure the Mac App Store tool is installed"
+  community.general.homebrew:
+    name: mas
+    state: present
 
 - name: "Install {{ item.name | default(item) }} from the mac app store"
   community.general.mas:
