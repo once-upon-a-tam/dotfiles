@@ -19,3 +19,42 @@
     - item.pos > 0
   loop: "{{ dockitems_persist }}"
 
+- name: Set autohide dock to true
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+    state: present
+
+- name: Disable dock bouncing
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: no-bouncing
+    type: bool
+    value: true
+    state: present
+
+- name: Set dock app opening effect
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mineffect
+    type: string
+    value: scale
+    state: present
+
+- name: Set dock minimize to app flag
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: minimize-to-application
+    type: bool
+    value: true
+    state: present
+
+- name: Set tile size
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 55
+    state: present
