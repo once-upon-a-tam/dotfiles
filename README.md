@@ -58,3 +58,16 @@ vault.yml
 
 Use the `ansible-vault encrypt` and `ansible-vault decrypt` commands to encrypt and decrypt the vault file, be careful not to commit a decrypted vault file, though !  
 To call the playbook, you can either input the password manually using the `--ask-vault-pass` flag, or store the password in a file **outside of the repo** and pass its path using the `--vault-password-file` option.
+
+
+## Run the playbook
+### Run the whole playbook
+```
+  ansible-playbook --vault-password-file <vault_password_file_path>  main.yml --ask-become-pass
+```
+
+### Run specific roles
+You can specify tags to trigger specific roles if you wish to, using the `-t <tag>` option, like so :
+```
+  ansible-playbook --vault-password-file <vault_password_file_path> main.yml --ask-become-pass -t <role_tag>
+```

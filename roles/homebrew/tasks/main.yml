@@ -2,3 +2,6 @@
 - name: Run Mac OS tasks
   ansible.builtin.import_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'
+  tags:
+    - homebrew
+    - brew
