@@ -1,0 +1,5 @@
+---
+- name: Install go language package
+  community.general.homebrew:
+    name: golang
+    state: latest
