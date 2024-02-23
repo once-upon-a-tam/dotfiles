@@ -11,13 +11,13 @@
 
 - name: "Copy tmux config file"
   ansible.builtin.copy:
-    src: .tmux.config
+    src: "{{ role_path }}/files/.tmux.conf"
     dest: "{{ ansible_user_dir }}/.config/"
     mode: 0644
 
 - name: "Copy tmux theme file"
   ansible.builtin.copy:
-    src: .tmux-theme.conf
+    src: "{{ role_path }}/files/.tmux-theme.conf"
     dest: "{{ ansible_user_dir }}/.config/"
     mode: 0644
 
