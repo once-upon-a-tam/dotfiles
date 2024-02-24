@@ -12,5 +12,5 @@ default_roles:
   - finder
 
 ssh_key:
-  id_ed5119:
-  id_ed5119.pub:
+  id_ed25519:
+  id_ed25519.pub:
