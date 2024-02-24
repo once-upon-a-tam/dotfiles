@@ -1,0 +1,10 @@
+---
+- name: Add the HashiCorp homebrew tap
+  community.general.homebrew_tap:
+    name: hashicorp/tap
+    state: present
+
+- name: Install Vagrant
+  community.general.homebrew:
+    name: hashicorp/tap/hashicorp-vagrant
+    state: latest
