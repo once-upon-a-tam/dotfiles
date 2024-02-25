@@ -34,7 +34,7 @@ alias nv="nvim"
 alias llt="exa -RTF --ignore-glob=\"node_modules\" --icons"
 alias llta="exa -RTFa"
 alias cat="bat -p"
-alias tmux="tmux -u"
+alias tmux="tmux -u -f ~/.config/.tmux.conf"
 
 export GPG_TTY=$(tty)
 export PATH="/usr/local/sbin:$PATH"
