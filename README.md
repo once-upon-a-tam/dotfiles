@@ -16,7 +16,7 @@ Ansible replicates what we would do to set up a development environment pretty w
 Homebrew is the standard Mac OS package manager. If you do not yet have is installed, simply run the following commands
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-(echo; echo 'eval "$/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> ~/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
 ```
 
