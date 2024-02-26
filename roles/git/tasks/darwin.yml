@@ -79,6 +79,6 @@
 
 - name: Set commit.template
   community.general.git_config:
-    name: commit.message
+    name: commit.template
     scope: global
     value: "{{ ansible_user_dir }}/.config/git/.commit_msg_template"
