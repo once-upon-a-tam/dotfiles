@@ -64,7 +64,13 @@
     name: pull.rebase
     scope: global
     value: false
- 
+
+- name: Ensure the git config directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/git"
+    state: directory
+    recurse: true
+
 - name: Copy commit message template file
   ansible.builtin.copy:
     src: "{{ role_path }}/files/.commit_msg_template"
