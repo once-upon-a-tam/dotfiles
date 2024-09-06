@@ -3,3 +3,8 @@
   ansible.builtin.import_tasks: darwin.yml
   when: ansible_os_family == 'Darwin'
   tags: tmux
+
+- name: Run Fedora tasks
+  ansible.builtin.import_tasks: fedora.yml
+  when: ansible_os_family == 'RedHat'
+  tags: tmux
