@@ -2,7 +2,7 @@
 - name: Install neovim dependencies
   dnf:
     name: "{{ item }}"
-    state: latest"
+    state: latest
   with_items:
     - ripgrep
     - codespell
