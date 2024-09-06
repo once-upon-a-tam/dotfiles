@@ -3,6 +3,7 @@
   dnf:
     name: "{{ item }}"
     state: latest
+  become: yes
   with_items:
     - ripgrep
     - codespell
@@ -13,6 +14,7 @@
   dnf:
     name: neovim
     state: latest
+  become: yes
 
 - name: Setup config folder
   file:

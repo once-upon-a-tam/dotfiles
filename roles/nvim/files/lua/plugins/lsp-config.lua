@@ -18,7 +18,7 @@ return {
           "dockerls",
           "gopls",
           "lua_ls",
-          "tsserver",
+          "ts_ls",
           "html",
           "ltex",
           -- Required for none-ls
