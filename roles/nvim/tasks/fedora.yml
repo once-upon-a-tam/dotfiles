@@ -1,0 +1,28 @@
+---
+- name: Install neovim dependencies
+  dnf:
+    name: "{{ item }}"
+    state: latest"
+  with_items:
+    - ripgrep
+    - codespell
+    - ansible-lint
+    - node
+
+- name: Install neovim
+  dnf:
+    name: neovim
+    state: latest
+
+- name: Setup config folder
+  file:
+    mode: "0755"
+    path: "{{ ansible_user_dir }}/.config/nvim"
+    state: directory
+
+- name: Create symlink to role files directory
+  ansible.builtin.file:
+    src: "{{ role_path }}/files"
+    dest: "{{ ansible_user_dir }}/.config/nvim"
+    state: link
+    force: true

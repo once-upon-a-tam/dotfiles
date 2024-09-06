@@ -7,10 +7,6 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.expandtab = true
 
--- Display spaces as middle dots
-vim.opt.list = true
-vim.opt.listchars= { space = '·' }
-
 -- Enable auto indenting and set it to 2 spaces
 vim.opt.smartindent = true
 vim.opt.shiftwidth = 2

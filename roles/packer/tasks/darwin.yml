@@ -1,0 +1,10 @@
+---
+- name: Add the Hashicorp Homebrew tap
+  community.general.homebrew_tap:
+    name: hashicorp/tap
+    state: present
+
+- name: Install packer
+  community.general.homebrew:
+    name: hashicorp/tap/packer
+    state: latest

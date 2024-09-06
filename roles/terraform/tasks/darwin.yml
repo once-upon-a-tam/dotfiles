@@ -8,4 +8,10 @@
   community.general.homebrew:
     name: hashicorp/tap/terraform
     state: latest
+
+# A static analysis tool for critical terraform configuration
+- name: Install tfsec
+  community.general.homebrew:
+    name: tfsec
+    state: latest
   

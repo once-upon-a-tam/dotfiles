@@ -1,0 +1,50 @@
+---
+- name: "Install R"
+  community.general.homebrew:
+    name: "r"
+    state: latest
+
+- name: "Install R Studio"
+  community.general.homebrew_cask:
+    name: "rstudio"
+    state: latest
+
+- name: "Install CRAN R packages"
+  command: > 
+    {{ R_bin_path }} -e 
+    "if (! ('{{ item }}' %in% installed.packages()[, 'Package'])) {
+      install.packages('{{ item }}', repos='{{ CRAN_MIRROR }}', dependencies = TRUE);
+      print('Added {{ item }}');
+    } else {
+      print('Already installed {{ item }}');
+    }"
+  register: r_cran_package
+  failed_when: >
+    r_cran_package.rc != 0 or
+    'had non-zero exit status' in r_cran_package.stderr or
+    'had non-zero exit status' in r_cran_package.stdout    
+  changed_when: "'Added' in r_cran_package.stdout"
+  loop: "{{ CRAN_packages }}"
+
+# - name: "Install CRAN R packages"
+#   command: >
+#     {{ R_bin_path }} -e "install.packages('{{ item }}', repos='{{ CRAN_MIRROR }}', dependencies = TRUE)"
+#   loop: "{{ CRAN_packages }}"
+
+# - name: "Install CRAN R packages"
+#   command: >
+#     xvfb-run --auto-servernum {{ R_bin_path }}/Rscript --slave --no-save --no-restore-history -e
+#     "Sys.setenv(RPYTHON_PYTHON_VERSION=3);
+#     if (! ('{{ item }}' %in% installed.packages()[, 'Package'])) {
+#       install.packages(pkgs='{{ item }}', repos='{{ CRAN_MIRROR }}');
+#       print('Added {{ item }}');
+#     } else {
+#       print('Already installed {{ item }}');
+#     }"
+#   register: r_cran_packages
+#   failed_when: >
+#     r_cran_packages.rc != 0 or
+#     'had non-zero exit status' in r_cran_packages.stderr or
+#     'had non-zero exit status' in r_cran_packages.stdout    
+#   changed_when: "'Added' in r_cran_packages.stdout"
+#   loop: "{{ CRAN_packages }}"

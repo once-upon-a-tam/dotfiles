@@ -5,6 +5,7 @@ return {
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
+          "comment",
           "bash",
           "dockerfile",
           "go",
@@ -21,6 +22,7 @@ return {
           "vim",
           "go",
           "python",
+          "hcl",
           "terraform",
           "yaml",
         },

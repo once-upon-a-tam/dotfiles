@@ -1,0 +1,5 @@
+---
+- name: "Install Jamovi"
+  community.general.homebrew_cask:
+    name: "jamovi"
+    state: "latest"

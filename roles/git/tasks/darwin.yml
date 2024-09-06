@@ -4,6 +4,11 @@
     name: git
     state: latest
 
+- name: Install GPG
+  community.general.homebrew:
+    name: gpg
+    state: latest
+
 - name: Set init.defaultBranch
   community.general.git_config:
     name: init.defaultBranch
@@ -28,18 +33,7 @@
     path: "{{ ansible_user_dir }}/.ssh/id_ed25519.pub"
   register: git_signing_key
     
-- name: Set user.signingkey
-  community.general.git_config:
-    name: user.signingkey
-    scope: global
-    value: "{{ ansible_user_dir }}/.ssh/id_ed25519.pub"
-  when: git_signing_key.stat.exists
-
-- name: Set gpg.format
-  community.general.git_config:
-    name: gpg.format
-    scope: global
-    value: ssh
+  # TODO: set GPG signing key.
 
 - name: Set commit.gpgsign
   community.general.git_config:

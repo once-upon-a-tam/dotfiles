@@ -8,3 +8,13 @@
   community.general.homebrew:
     name: hashicorp/tap/hashicorp-vagrant
     state: latest
+
+- name: Install VMWare
+  community.general.homebrew_cask:
+    name: vmware-fusion
+    state: present
+
+- name: Install the VMware vagrant utility plugin
+  community.general.homebrew_cask:
+    name: vagrant-vmware-utility
+    state: present

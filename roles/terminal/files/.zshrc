@@ -31,12 +31,17 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 alias nv="nvim"
-alias llt="exa -RTF --ignore-glob=\"node_modules\" --icons"
-alias llta="exa -RTFa"
+alias llt="eza -RTF --ignore-glob=\"node_modules\" --icons --group-directories-first"
+alias llta="eza -RTFa --group-directories-first"
 alias cat="bat -p"
 alias tmux="tmux -u -f ~/.config/.tmux.conf"
 
 export GPG_TTY=$(tty)
 export PATH="/usr/local/sbin:$PATH"
 
+# Start the starship command prompt
 eval "$(starship init zsh)"
+
+# Start the python environment manager
+eval "$(pyenv init -)"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi

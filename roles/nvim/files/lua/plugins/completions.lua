@@ -17,6 +17,9 @@ return {
     "hrsh7th/cmp-buffer",
   },
   {
+    "SergioRibera/cmp-dotenv",
+  },
+  {
     "hrsh7th/cmp-path",
   },
   {
@@ -42,6 +45,7 @@ return {
           { name = "luasnip" },
           { name = "path" },
           { name = "buffer" },
+          { name = "dotenv" },
         }),
         formatting = {
           format = lspkind.cmp_format({

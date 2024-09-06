@@ -16,8 +16,14 @@ return {
           null_ls.builtins.formatting.terraform_fmt,
           null_ls.builtins.diagnostics.tfsec,
 
-          -- latex
-          null_ls.builtins.diagnostics.chktex,
+          -- dockerfiles
+          null_ls.builtins.diagnostics.hadolint,
+
+          -- .env
+          null_ls.builtins.diagnostics.dotenv_linter,
+
+          -- editor config
+          null_ls.builtins.diagnostics.editorconfig_checker,
 
           -- common spelling mistakes
           null_ls.builtins.diagnostics.codespell,
@@ -30,9 +36,15 @@ return {
           null_ls.builtins.diagnostics.golangci_lint,
           null_ls.builtins.formatting.gofmt,
 
+          -- markdown
+          null_ls.builtins.diagnostics.markdownlint,
+
           -- javascript
           null_ls.builtins.formatting.prettierd,
-          null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.formatting.biome,
+
+          -- html
+          null_ls.builtins.diagnostics.djlint,
 
           --css
           null_ls.builtins.formatting.stylelint,

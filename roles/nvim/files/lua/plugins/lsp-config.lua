@@ -20,6 +20,8 @@ return {
           "lua_ls",
           "tsserver",
           "html",
+          "ltex",
+          -- Required for none-ls
           "ansiblels",
           "terraformls",
         }
@@ -41,7 +43,12 @@ return {
       lspconfig.tsserver.setup({
         capabilities = capabilities
       })
+
       lspconfig.html.setup({
+        capabilities = capabilities
+      })
+
+      lspconfig.gopls.setup({
         capabilities = capabilities
       })
 

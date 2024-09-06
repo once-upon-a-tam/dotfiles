@@ -1,16 +1,8 @@
 git_user_name: Timothee Simon-Franza
 git_user_email:
 default_roles:
-  - python
-  # - ssh
   # - homebrew
-  # - applications
-  # - docker
-  # - terminal
-  # - nvim
-  # - dock
-  # - firewall
-  # - finder
+  - rstudio
 
 ssh_key:
   id_ed25519:

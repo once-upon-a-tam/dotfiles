@@ -1,0 +1,16 @@
+---
+- name: Install pyenv
+  community.general.homebrew:
+    name: pyenv
+    state: latest
+
+- name: Install pyenv-virtualenv 
+  community.general.homebrew:
+    name: pyenv-virtualenv
+    state: latest
+
+- name: Install requested Python version(s)
+  command: "pyenv install {{ python_version }}"
+  loop_control:
+    loop_var: python_version
+  with_items: "{{ python_versions }}"
