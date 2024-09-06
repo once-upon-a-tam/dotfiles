@@ -5,3 +5,10 @@
   tags:
     - nvim
     - neovim
+
+- name: Run Fedora tasks
+  ansible.builtin.import_tasks: fedora.yml
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - nvim
+    - neovim
