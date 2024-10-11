@@ -15,15 +15,14 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "dockerls",
-          "gopls",
-          "lua_ls",
-          "ts_ls",
-          "html",
-          "ltex",
-          -- Required for none-ls
-          "ansiblels",
-          "terraformls",
+          "dockerls",     -- Docker
+          "gopls",        -- Go
+          "lua_ls",       -- Lua
+          "html",         -- HTML
+          "ltex",         -- Latex
+          "biome",        -- Typescript
+          "ansiblels",    -- Ansible
+          "terraformls",  -- Terraform
         }
       })
     end,
@@ -38,6 +37,13 @@ return {
 
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' }
+            }
+          }
+        }
       })
 
       lspconfig.tsserver.setup({
@@ -52,7 +58,17 @@ return {
         capabilities = capabilities
       })
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      vim.diagnostic.config({
+        signs = true,
+        underline = true,
+        virtual_text = false,
+        float = {
+          source = "always",
+          border = "solid",
+          focusable = false,
+        },
+      })
+      vim.keymap.set("n", "K", "<cmd>lua vim.diagnostic.open_float()<CR>", {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
