@@ -31,8 +31,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 alias nv="nvim"
-alias llt="eza -RTF --ignore-glob=\"node_modules\" --icons --group-directories-first"
-alias llta="eza -RTFa --group-directories-first"
+alias llt="eza -RTF --ignore-glob=\"node_modules|.git\" --icons --group-directories-first"
+alias llta="eza -RTaF --ignore-glob=\"node_modules|.git\" --icons --group-directories-first"
 alias cat="bat -p"
 alias tmux="tmux -u -f ~/.config/.tmux.conf"
 
@@ -45,3 +45,8 @@ eval "$(starship init zsh)"
 # Start the python environment manager
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
+
